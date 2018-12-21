@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import openSocket from 'socket.io-client';
 import './App.css';
 import Status from './Status';
@@ -7,7 +8,7 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        this.socket = openSocket('http://192.168.1.12:5000/');
+        this.socket = openSocket('http://192.168.1.50:5000/');
         this.socket.on("update", update => this.setState({
             status: update["status"],
             led: update["led"],
@@ -39,5 +40,7 @@ class App extends Component {
 		);
 	}
 }
+
+ReactDOM.render(<App />, document.getElementById('root'));
 
 export default App;
