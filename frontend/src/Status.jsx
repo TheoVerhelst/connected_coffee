@@ -6,6 +6,13 @@ export default class Status extends React.Component {
     constructor(props) {
         super(props);
 		this.states_text = {
+            disconnected: {
+                color: "grey darken-2",
+                button_color: "grey lighten-1",
+                title: "Not connected",
+                text: "Please wait until we establish a connection to the coffee machine.",
+                icon: "timelapse"
+            },
 			off: {
 				color: "grey darken-2",
 				button_color: "grey lighten-1",

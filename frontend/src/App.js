@@ -10,7 +10,7 @@ class App extends Component {
         this.socket = openSocket('http://192.168.0.7:5000/');
         this.socket.on("update", status => this.setState(status));
         this.state = {
-            state: "off",
+            state: "disconnected",
             led: false,
             ordered_cups: 0
         };

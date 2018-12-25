@@ -5,6 +5,7 @@ export default class Buttons extends React.Component {
     constructor(props) {
         super(props);
 		this.button_colors = {
+            disconnected: "grey lighten-1",
 			off: "grey lighten-1",
 			heating: "blue lighten-1",
 			ready: "light-green lighten-1",
