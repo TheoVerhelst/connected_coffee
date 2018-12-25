@@ -45,17 +45,17 @@ export default class Status extends React.Component {
     }
 
 	render() {
-		const status_text = this.states_text[this.props.status];
+		const state_text = this.states_text[this.props.state_ll];
 		return (
-			<div className={"card " + status_text.color}>
+			<div className={"card " + state_text.color}>
 				<div className="card-content white-text">
 					<span className="card-title">
-						<i className="large material-icons right state-icon">{status_text.icon}</i>
-						{status_text.title}
+						<i className="large material-icons right state-icon">{state_text.icon}</i>
+						{state_text.title}
 					</span>
-					<p>{status_text.text}</p>
+					<p>{state_text.text}</p>
 				</div>
-				<Buttons socket={this.props.socket} status={this.props.status} ordered_cups={this.props.ordered_cups}/>
+				<Buttons socket={this.props.socket} state_ll={this.props.state_ll} ordered_cups={this.props.ordered_cups}/>
 			</div>
 		);
 	}

@@ -7,16 +7,14 @@ import Status from './Status';
 class App extends Component {
     constructor(props) {
         super(props);
-
-        this.socket = openSocket('http://192.168.1.50:5000/');
-        this.socket.on("update", update => this.setState({
-            status: update["status"],
+        this.socket = openSocket('http://localhost:5000/');
+        this.socket.on("update", update => {console.log("aaa"); this.setState({
+            state_ll: update["state"],
             led: update["led"],
             ordered_cups: update["ordered_cups"]
-        }));
-
+        })});
         this.state = {
-            status: "off",
+            state_ll: "off",
             led: false,
             ordered_cups: 0
         };
@@ -33,7 +31,7 @@ class App extends Component {
                         </h1>
 					</div>
                     <div className="row">
-                        <Status socket={this.socket} status={this.state.status} ordered_cups={this.state.ordered_cups} />
+                        <Status socket={this.socket} state_ll={this.state.state_ll} ordered_cups={this.state.ordered_cups} />
                     </div>
 				</div>
 			</div>
