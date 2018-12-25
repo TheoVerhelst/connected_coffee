@@ -18,20 +18,20 @@ export default class Buttons extends React.Component {
 
 
     handlePower() {
-        this.props.socket.emit("command", this.props.status === "off" ? "turn_on" : "turn_off");
+        this.props.socket.emit(this.props.state === "off" ? "turn_on" : "turn_off", "");
     }
 
     handleCup(cups) {
         var command = "brew_" + (cups === 1 ? "one" : "two")
         if (this.props.ordered_cups === cups)
             command = "stop"
-        this.props.socket.emit("command", command);
+        this.props.socket.emit(command, "");
     }
 
 	render() {
-		const classes = "btn-floating btn-large waves-effect waves-light " + this.button_colors[this.props.status] + " command-button";
+		const classes = "btn-floating btn-large waves-effect waves-light " + this.button_colors[this.props.state] + " command-button";
 		var cupButton1, cupButton2;
-		if (this.props.status !== "no_water") {
+		if (this.props.state !== "no_water") {
 			cupButton1 =
                 <button className={classes} onClick={this.handleOneCup}>
     				<i className="material-icons">{this.props.ordered_cups === 1 ? "cancel" : "looks_one"}</i>
