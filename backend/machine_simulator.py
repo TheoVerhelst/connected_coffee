@@ -15,7 +15,7 @@ class MachineSimulator(Thread):
         self.heat_rate = 0.1
         self.off_cool_rate = 0.05
         self.brew_rate = 0.1
-        self.brew_cool_rate = 0.01
+        self.brew_cool_rate = 0.05
         self.led_blink_period = 0.5
         self.sleep_time = 0.1
 

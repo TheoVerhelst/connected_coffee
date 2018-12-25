@@ -8,11 +8,7 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.socket = openSocket('http://192.168.0.7:5000/');
-        this.socket.on("update", update => {console.log("aaa"); this.setState({
-            state: update["state"],
-            led: update["led"],
-            ordered_cups: update["ordered_cups"]
-        })});
+        this.socket.on("update", status => this.setState(status));
         this.state = {
             state: "off",
             led: false,

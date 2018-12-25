@@ -18,14 +18,14 @@ export default class Buttons extends React.Component {
 
 
     handlePower() {
-        this.props.socket.emit(this.props.state === "off" ? "turn_on" : "turn_off", "");
+        this.props.socket.emit(this.props.state === "off" ? "turn_on" : "turn_off");
     }
 
     handleCup(cups) {
         var command = "brew_" + (cups === 1 ? "one" : "two")
         if (this.props.ordered_cups === cups)
             command = "stop"
-        this.props.socket.emit(command, "");
+        this.props.socket.emit(command);
     }
 
 	render() {
