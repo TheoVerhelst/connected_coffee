@@ -125,7 +125,7 @@ class Status extends React.Component {
 class App extends React.Component {
     constructor(props) {
         super(props);
-        this.socket = io.connect('http://localhost:5000/');
+        this.socket = io.connect('http://192.168.1.32:5000/');
         this.socket.on("update", status => this.setState(status));
         this.state = {
             state: "disconnected",
