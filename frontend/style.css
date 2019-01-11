@@ -1,0 +1,13 @@
+body {
+    background-color: #e0e0e0
+}
+
+.command-button {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.state-icon {
+    position: relative;
+    top: 16px;
+}

@@ -14,6 +14,10 @@ logger.setLevel(logging.INFO)
 app = Flask(__name__)
 socketio = SocketIO(app, async_mode="threading")
 
+@app.route("/")
+def index():
+    return "Hello!"
+
 def send_update(status):
     socketio.emit("update", status, broadcast=True, json=True, ignore_queue=True)
 
