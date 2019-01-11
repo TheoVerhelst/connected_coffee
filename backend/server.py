@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_socketio import SocketIO, emit
 import logging
-from machine_simulator import MachineSimulator
+from SenseoDriver import SenseoDriver
 
 logger = logging.getLogger()
 handler = logging.StreamHandler()
@@ -14,11 +14,9 @@ app = Flask(__name__)
 socketio = SocketIO(app, async_mode="threading")
 
 def send_update(status):
-    status["ordered_cups"] = 0
-    logger.info("Sending update: " + str(status))
     socketio.emit("update", status, broadcast=True, json=True, ignore_queue=True)
 
-machine_thread = MachineSimulator(send_update)
+machine_driver = SenseoDriver(send_update)
 
 @socketio.on("connect")
 def test_connect():
@@ -30,23 +28,23 @@ def test_disconnect():
 
 @socketio.on("turn_on")
 def turn_on():
-    machine_thread.commands.put("power")
+    machine_driver.turn_on()
 
 @socketio.on("turn_off")
 def turn_off():
-    machine_thread.commands.put("power")
+    machine_driver.turn_off()
 
 @socketio.on("stop")
 def stop():
-    machine_thread.commands.put("power")
+    machine_driver.stop()
 
 @socketio.on("brew_one")
 def brew_one():
-    machine_thread.commands.put("brew_one")
+    machine_driver.brew_one()
 
 @socketio.on("brew_two")
 def brew_two():
-    machine_thread.commands.put("brew_two")
+    machine_driver.brew_two()
 
 if __name__ == "__main__":
     machine_thread.start()

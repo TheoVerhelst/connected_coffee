@@ -4,7 +4,7 @@ from functools import partial
 from time import perf_counter
 
 class MachineSimulator(Thread):
-    def __init__(self, status_change_callback):
+    def __init__(self):
         super().__init__()
         self.state = "off"
         self.temperature = 0
@@ -19,7 +19,7 @@ class MachineSimulator(Thread):
         self.led_blink_period = 0.5
         self.sleep_time = 0.1
 
-        self.state_change_callback = status_change_callback
+        self.status_change_callback = None
         self.commands = Queue()
         self.handlers = {
             "power": self.power,
@@ -84,7 +84,6 @@ class MachineSimulator(Thread):
             self.temperature = max(0, self.temperature)
 
     def send_status(self):
-        self.state_change_callback({
-            "state": self.state,
+        self.status_change_callback({
             "led": self.led
         })
