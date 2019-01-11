@@ -38,18 +38,11 @@ source ve/bin/activate
 pip install -r requirements.txt
 ```
 And run the beast with
-#### `python3 server.py`
+#### `python3 backend/server.py`
 
 ### Frontend
 
-The frontend is written with React. In the frontend directory, you can run:
+The frontend is written with in HTML React. So you just need to serve the static
+files with a web server, for example `lighttpd`. Just install `lighttpd` and run
 
-#### `npm start`
-
-Runs the frontend in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-#### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### `sudo bash deploy.sh`
