@@ -1,2 +1,2 @@
-backend/ve/
-frontend/node_modules/
+ve/
+__pycache__/

@@ -21,6 +21,11 @@ The next step would be to also implement a server for MQTT messages so that you 
 * A mock simulation of a coffee machine is running on the backend. It heats up and brew a cup in 4 seconds. Top tier.
 * The React frontend connects to the backend using Websockets so it's realtime and stuff.
 
+## What's not working
+
+* The state "no_water" is not handled yet.
+* The whole project hasn't been tested IRL.
+
 ## Running the damn thing
 
 ### Backend
